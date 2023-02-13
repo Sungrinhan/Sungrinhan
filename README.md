@@ -23,7 +23,7 @@
   <br/>
   <br/>
 
-  :books: **ProGramming Language** :books:
+  :books: **Programming Language** :books:
   
   <br/>  
   <img src="https://img.shields.io/badge/JAVASCRIPT-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black">
