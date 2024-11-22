@@ -2,7 +2,7 @@ name: Update README with Stats
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 매일 자정 업데이트
+    - cron: '*/5 * * * *'  # 매일 자정 업데이트
   workflow_dispatch:     # 수동 실행도 가능
 
 jobs:
