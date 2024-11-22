@@ -1,0 +1,28 @@
+name: Update README with Stats
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 매일 자정 업데이트
+  workflow_dispatch:     # 수동 실행도 가능
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Update README
+        run: |
+          curl -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}" \
+               "https://github-readme-stats.vercel.app/api?username=Sungrinhan&count_private=true&show_icons=true&theme=merko" \
+               > stats.svg
+          sed -i '/<!--START_SECTION:stats-->.*<!--END_SECTION:stats-->/c\![Stats](stats.svg)' README.md
+
+      - name: Commit Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md stats.svg
+          git commit -m "Update README with latest stats"
+          git push
